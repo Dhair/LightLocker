@@ -7,7 +7,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:' + System.properties['gradleVersion']
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
-        classpath 'com.dhair.hotfix:gradle:' + System.properties['hotFixVersion']
+//        classpath 'com.dhair.hotfix:gradle:' + System.properties['hotFixVersion']
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }

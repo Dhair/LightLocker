@@ -13,11 +13,26 @@ android {
         versionCode project.properties.mVersionCode
         versionName project.properties.versionName
     }
+
+    sourceSets {
+        main {
+            res.srcDirs = ['src/main/res',
+                           'src/main/res/layouts',
+                           'src/main/res/layouts/settings',
+                           'src/main/res/layouts/main',
+                           'src/main/res/layouts/about']
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    lintOptions {
+        abortOnError false
     }
 }
 
