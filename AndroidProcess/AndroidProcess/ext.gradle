@@ -1,0 +1,3 @@
+project.ext {
+    appCompactVersion = '23.3.0'
+}

@@ -1,0 +1,4 @@
+project.ext {
+    javapoetVersion = '1.0.0'
+    autoServiceVersion = '1.0-rc2'
+}

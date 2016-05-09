@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="2.0" xmlns:m="http://ant.apache.org/ivy/maven">
+  <info organisation="com.dhair.hotfix" module="HotfixPlugin" revision="1.1.0" status="integration" publication="20160109152443">
+    <description/>
+  </info>
+  <configurations>
+    <conf name="archives" visibility="public" description="Configuration for archive artifacts."/>
+    <conf name="compile" visibility="private" description="Compile classpath for source set 'main'."/>
+    <conf name="default" visibility="public" description="Configuration for default artifacts." extends="runtime"/>
+    <conf name="runtime" visibility="private" description="Runtime classpath for source set 'main'." extends="compile"/>
+    <conf name="testCompile" visibility="private" description="Compile classpath for source set 'test'." extends="compile"/>
+    <conf name="testRuntime" visibility="private" description="Runtime classpath for source set 'test'." extends="runtime,testCompile"/>
+  </configurations>
+  <publications>
+    <artifact name="dhair-hotfix-plugin" type="jar" ext="jar" conf="archives,runtime"/>
+    <artifact name="dhair-hotfix-plugin" type="jar" ext="jar" conf="archives" m:classifier="sources"/>
+    <artifact name="dhair-hotfix-plugin" type="jar" ext="jar" conf="archives" m:classifier="javadoc"/>
+  </publications>
+  <dependencies>
+    <dependency org="commons-io" name="commons-io" rev="1.4" conf="compile-&gt;default"/>
+    <dependency org="commons-codec" name="commons-codec" rev="1.6" conf="compile-&gt;default"/>
+  </dependencies>
+</ivy-module>

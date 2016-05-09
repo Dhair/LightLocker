@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/AutoLayoutPlugin.iml" filepath="$PROJECT_DIR$/AutoLayoutPlugin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/autolayout_api/autolayout_api.iml" filepath="$PROJECT_DIR$/autolayout_api/autolayout_api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/autolayout_compiler/autolayout_compiler.iml" filepath="$PROJECT_DIR$/autolayout_compiler/autolayout_compiler.iml" />
+    </modules>
+  </component>
+</project>

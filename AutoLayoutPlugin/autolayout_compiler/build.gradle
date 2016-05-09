@@ -1,0 +1,10 @@
+apply from: '../ext.gradle'
+apply plugin: 'java'
+
+sourceCompatibility = JavaVersion.VERSION_1_7
+targetCompatibility = JavaVersion.VERSION_1_7
+dependencies {
+    compile "com.google.auto.service:auto-service:${autoServiceVersion}"
+    compile "com.squareup:javapoet:${javapoetVersion}"
+    compile project(':autolayout_api')
+}
