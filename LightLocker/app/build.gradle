@@ -1,7 +1,7 @@
 apply from: '../ext.gradle'
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
-
+apply plugin: "com.dhair.hotfix"
 android {
     compileSdkVersion project.properties.compileSdkVersion
     buildToolsVersion project.properties.buildToolsVersion
