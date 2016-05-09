@@ -1,4 +1,4 @@
-package com.dhair.lightlocker;
+package com.dhair.light.locker;
 
 import org.junit.Test;
 

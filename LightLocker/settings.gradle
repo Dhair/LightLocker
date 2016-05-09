@@ -1,1 +1,13 @@
 include ':app'
+
+include ':AndroidCommon'
+project(':AndroidCommon').projectDir = new File('../AndroidCommon/AndroidCommon')
+
+include ':autolayout_api'
+project(':autolayout_api').projectDir = new File('../AutoLayoutPlugin/autolayout_api')
+
+include ':autolayout_compiler'
+project(':autolayout_compiler').projectDir = new File('../AutoLayoutPlugin/autolayout_compiler')
+
+include ':AndroidProcess'
+project(':AndroidProcess').projectDir = new File('../AndroidProcess/AndroidProcess')

@@ -7,12 +7,20 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
+            <option value="$PROJECT_DIR$/../AndroidCommon/AndroidCommon" />
+            <option value="$PROJECT_DIR$/../AndroidProcess/AndroidProcess" />
+            <option value="$PROJECT_DIR$/../AutoLayoutPlugin/autolayout_api" />
+            <option value="$PROJECT_DIR$/../AutoLayoutPlugin/autolayout_compiler" />
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>
         <option name="myModules">
           <set>
+            <option value="$PROJECT_DIR$/../AndroidCommon/AndroidCommon" />
+            <option value="$PROJECT_DIR$/../AndroidProcess/AndroidProcess" />
+            <option value="$PROJECT_DIR$/../AutoLayoutPlugin/autolayout_api" />
+            <option value="$PROJECT_DIR$/../AutoLayoutPlugin/autolayout_compiler" />
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
           </set>
