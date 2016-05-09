@@ -9,6 +9,7 @@
           <set>
             <option value="$PROJECT_DIR$/../AndroidCommon/AndroidCommon" />
             <option value="$PROJECT_DIR$/../AndroidProcess/AndroidProcess" />
+            <option value="$PROJECT_DIR$/../AndroidUILibrary/AndroidUILibrary" />
             <option value="$PROJECT_DIR$/../AutoLayoutPlugin/autolayout_api" />
             <option value="$PROJECT_DIR$/../AutoLayoutPlugin/autolayout_compiler" />
             <option value="$PROJECT_DIR$" />
@@ -19,6 +20,7 @@
           <set>
             <option value="$PROJECT_DIR$/../AndroidCommon/AndroidCommon" />
             <option value="$PROJECT_DIR$/../AndroidProcess/AndroidProcess" />
+            <option value="$PROJECT_DIR$/../AndroidUILibrary/AndroidUILibrary" />
             <option value="$PROJECT_DIR$/../AutoLayoutPlugin/autolayout_api" />
             <option value="$PROJECT_DIR$/../AutoLayoutPlugin/autolayout_compiler" />
             <option value="$PROJECT_DIR$" />

@@ -11,3 +11,6 @@ project(':autolayout_compiler').projectDir = new File('../AutoLayoutPlugin/autol
 
 include ':AndroidProcess'
 project(':AndroidProcess').projectDir = new File('../AndroidProcess/AndroidProcess')
+
+include ':AndroidUILibrary'
+project(':AndroidUILibrary').projectDir = new File('../AndroidUILibrary/AndroidUILibrary')
