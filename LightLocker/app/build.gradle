@@ -20,7 +20,8 @@ android {
                            'src/main/res/layouts',
                            'src/main/res/layouts/settings',
                            'src/main/res/layouts/main',
-                           'src/main/res/layouts/about']
+                           'src/main/res/layouts/about',
+                           'src/main/res/layouts/base']
         }
     }
 
@@ -63,13 +64,13 @@ android {
     }
 }
 
-def signAppWithKeystore(){
+def signAppWithKeystore() {
     def Properties props = new Properties()
     def propFile = new File('key/sign.properties')
-    if (propFile.canRead()){
+    if (propFile.canRead()) {
         props.load(new FileInputStream(propFile))
 
-        if (props!=null && props.containsKey('STORE_FILE') && props.containsKey('STORE_PASSWORD') &&
+        if (props != null && props.containsKey('STORE_FILE') && props.containsKey('STORE_PASSWORD') &&
                 props.containsKey('KEY_ALIAS') && props.containsKey('KEY_PASSWORD')) {
             android.signingConfigs.release.storeFile = file(props['STORE_FILE'])
             android.signingConfigs.release.storePassword = props['STORE_PASSWORD']
@@ -79,7 +80,7 @@ def signAppWithKeystore(){
             println 'signing.properties found but some entries are missing'
             android.buildTypes.release.signingConfig = null
         }
-    }else {
+    } else {
         println 'signing.properties not found'
         android.buildTypes.release.signingConfig = null
     }
@@ -120,4 +121,11 @@ dependencies {
 
     compile project(':AndroidCommon')
     compile project(':AndroidProcess')
+
+    //LeakCanary
+    debugCompile "com.squareup.leakcanary:leakcanary-android:${leakCanaryVersion}"
+    releaseCompile "com.squareup.leakcanary:leakcanary-android-no-op:${leakCanaryVersion}"
+    testCompile "com.squareup.leakcanary:leakcanary-android-no-op:${leakCanaryVersion}"
+
+    //Realm or LiteOrm
 }
