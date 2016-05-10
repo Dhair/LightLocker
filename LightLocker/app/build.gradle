@@ -94,7 +94,7 @@ dependencies {
     compile "com.android.support:design:${supportVersion}"
     compile "com.android.support:recyclerview-v7:${supportVersion}"
 
-    //Butterknife
+    //ButterKnife
     compile "com.jakewharton:butterknife:${butterknifeVersion}"
     apt "com.jakewharton:butterknife-compiler:${butterknifeVersion}"
 
@@ -114,7 +114,7 @@ dependencies {
     //Retrofit-RxJava
     compile "com.squareup.retrofit2:adapter-rxjava:${retrofitVersion}"
 
-    //Autolayout
+    //AutoLayout
     compile project(':autolayout_api')
     apt project(':autolayout_compiler')
 
