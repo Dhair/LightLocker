@@ -1,21 +1,43 @@
 package com.dhair.light.locker.ui;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-
 import com.android.common.util.ToastUtils;
 import com.dhair.light.locker.R;
+import com.dhair.light.locker.ui.abs.AbsActivity;
 import com.dhair.light.locker.utils.CustomHandlerThread;
 import com.library.processutil.AndroidProcesses;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AbsActivity {
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected void initData() {
+
+    }
+
+    @Override
+    protected void initWidgets() {
         ToastUtils.showToast("sdfsdfdsf");
         AndroidProcesses.isMyProcessInTheForeground();
-        new CustomHandlerThread().start();
+        new CustomHandlerThread() {
+            @Override
+            protected void onLooperInterAsync() {
+
+            }
+
+            @Override
+            protected void onLooperInter() {
+
+            }
+        }.start();
+    }
+
+    @Override
+    protected void initWidgetsActions() {
+
+    }
+
+    @Override
+    protected int getContentView() {
+        return R.layout.activity_main;
     }
 }

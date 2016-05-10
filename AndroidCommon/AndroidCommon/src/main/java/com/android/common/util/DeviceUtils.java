@@ -20,6 +20,8 @@ import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.media.AudioManager;
 import android.os.Build;
 import android.provider.Settings;
@@ -28,6 +30,9 @@ import android.telephony.TelephonyManager;
 import android.view.Window;
 import android.view.WindowManager;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -362,4 +367,85 @@ public class DeviceUtils {
                 ringVloume, AudioManager.FLAG_PLAY_SOUND);
     }
 
+    public static boolean isMiui(Context context) {
+
+        if ("xiaomi".equalsIgnoreCase(Build.MANUFACTURER)) {
+            return true;
+        }
+
+        Intent i = new Intent("miui.intent.action.APP_PERM_EDITOR");
+        i.setClassName("com.android.settings", "com.miui.securitycenter.permission.AppPermissionsEditor");
+        if (isIntentAvailable(context, i)) {
+            return true;
+        }
+        //双重判断
+        boolean isMiUi = "miui".equalsIgnoreCase(Build.ID);
+
+        if ("xiaomi".equalsIgnoreCase(Build.BRAND)) {
+            isMiUi = true;
+        }
+        if (Build.MODEL != null) {
+            String str = Build.MODEL.toLowerCase();
+            if (str.contains("xiaomi")) {
+                isMiUi = true;
+            }
+            if (str.contains("miui")) {
+                isMiUi = true;
+            }
+        }
+        return isMiUi;
+    }
+
+    public static boolean isFlyme() {
+        return Build.DISPLAY.startsWith("Flyme");
+    }
+
+    private static boolean isIntentAvailable(Context context, Intent intent) {
+        PackageManager packageManager = context.getPackageManager();
+        List<ResolveInfo> list = packageManager.queryIntentActivities(intent, PackageManager.GET_ACTIVITIES);
+        return list.size() > 0;
+    }
+
+    public static boolean setMIUIStatusBarDarkMode(Activity activity, boolean darkMode) {
+        Class<? extends Window> clazz = activity.getWindow().getClass();
+        try {
+            int darkModeFlag = 0;
+            Class<?> layoutParams = Class.forName("android.view.MiuiWindowManager$LayoutParams");
+            Field field = layoutParams.getField("EXTRA_FLAG_STATUS_BAR_DARK_MODE");
+            darkModeFlag = field.getInt(layoutParams);
+            Method extraFlagField = clazz.getMethod("setExtraFlags", int.class, int.class);
+            extraFlagField.invoke(activity.getWindow(), darkMode ? darkModeFlag : 0, darkModeFlag);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public static boolean setFlymeStatusBarDarkIcon(Activity activity, boolean dark) {
+        boolean result = false;
+        if (activity != null) {
+            try {
+                WindowManager.LayoutParams lp = activity.getWindow().getAttributes();
+                Field darkFlag = WindowManager.LayoutParams.class
+                        .getDeclaredField("MEIZU_FLAG_DARK_STATUS_BAR_ICON");
+                Field meizuFlags = WindowManager.LayoutParams.class
+                        .getDeclaredField("meizuFlags");
+                darkFlag.setAccessible(true);
+                meizuFlags.setAccessible(true);
+                int bit = darkFlag.getInt(null);
+                int value = meizuFlags.getInt(lp);
+                if (dark) {
+                    value |= bit;
+                } else {
+                    value &= ~bit;
+                }
+                meizuFlags.setInt(lp, value);
+                activity.getWindow().setAttributes(lp);
+                result = true;
+            } catch (Exception e) {
+            }
+        }
+        return result;
+    }
 }
