@@ -15,3 +15,29 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+
+#Common(Retrofit、Okhttp)
+-keepattributes Signature
+-keepattributes Exceptions
+-keepattributes *Annotation*
+-dontwarn okio.**
+
+#Butterknife start
+-keep public class * implements butterknife.internal.ViewBinder { public <init>(); }
+-keep class butterknife.*
+-keepclasseswithmembernames class * { @butterknife.* <methods>; }
+-keepclasseswithmembernames class * { @butterknife.* <fields>; }
+#Butterknife end
+
+#Retrofit
+-dontwarn retrofit2.**
+-keep class retrofit2.** { *; }
+
+#OkHttp
+-keep class okhttp3.** { *; }
+-keep interface okhttp3.* { *; }
+-dontwarn okhttp3.*
+
+#RxJava
+-dontwarn rx.**
+-keep class rx.** { * ; }
