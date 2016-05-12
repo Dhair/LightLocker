@@ -1,4 +1,4 @@
-package com.dhair.light.locker.service;
+package com.dhair.light.locker.component.service;
 
 import android.app.Activity;
 import android.content.Context;

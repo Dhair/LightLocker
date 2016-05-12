@@ -283,4 +283,9 @@ public class DisplayUtils {
         return (flag & WindowManager.LayoutParams.FLAG_FULLSCREEN) == WindowManager.LayoutParams.FLAG_FULLSCREEN;
     }
 
+    public static boolean isTranslucentStatus(Activity activity) {
+        int flag = activity.getWindow().getAttributes().flags;
+        return (flag & WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS) == WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+    }
+
 }

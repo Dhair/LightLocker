@@ -3,7 +3,7 @@ package com.dhair.light.locker.ui;
 import com.android.common.util.ToastUtils;
 import com.dhair.light.locker.R;
 import com.dhair.light.locker.ui.abs.AbsActivity;
-import com.dhair.light.locker.utils.CustomHandlerThread;
+import com.dhair.light.locker.component.thread.CustomHandlerThread;
 import com.library.processutil.AndroidProcesses;
 
 public class MainActivity extends AbsActivity {

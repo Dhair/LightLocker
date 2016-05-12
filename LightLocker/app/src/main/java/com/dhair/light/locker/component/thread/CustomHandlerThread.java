@@ -1,4 +1,4 @@
-package com.dhair.light.locker.utils;
+package com.dhair.light.locker.component.thread;
 
 import android.os.Handler;
 import android.os.HandlerThread;

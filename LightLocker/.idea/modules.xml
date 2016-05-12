@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/../AndroidCommon/AndroidCommon/AndroidCommon.iml" filepath="$PROJECT_DIR$/../AndroidCommon/AndroidCommon/AndroidCommon.iml" />
       <module fileurl="file://$PROJECT_DIR$/../AndroidProcess/AndroidProcess/AndroidProcess.iml" filepath="$PROJECT_DIR$/../AndroidProcess/AndroidProcess/AndroidProcess.iml" />
       <module fileurl="file://$PROJECT_DIR$/../AndroidUILibrary/AndroidUILibrary/AndroidUILibrary.iml" filepath="$PROJECT_DIR$/../AndroidUILibrary/AndroidUILibrary/AndroidUILibrary.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../AndroidUILibrary/AndroidUILibrary/AndroidUILibrary.iml" filepath="$PROJECT_DIR$/../AndroidUILibrary/AndroidUILibrary/AndroidUILibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/LightLocker.iml" filepath="$PROJECT_DIR$/LightLocker.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/../AutoLayoutPlugin/autolayout_api/autolayout_api.iml" filepath="$PROJECT_DIR$/../AutoLayoutPlugin/autolayout_api/autolayout_api.iml" />

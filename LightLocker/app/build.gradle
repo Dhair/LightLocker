@@ -7,7 +7,7 @@ android {
     buildToolsVersion project.properties.buildToolsVersion
 
     defaultConfig {
-        applicationId "com.dhair.lightlocker"
+        applicationId "com.dhair.light.locker"
         minSdkVersion project.properties.minSdkVersion
         targetSdkVersion project.properties.targetSdkVersion
         versionCode project.properties.mVersionCode
@@ -16,12 +16,13 @@ android {
 
     sourceSets {
         main {
-            res.srcDirs = ['src/main/res',
-                           'src/main/res/layouts',
-                           'src/main/res/layouts/settings',
-                           'src/main/res/layouts/main',
-                           'src/main/res/layouts/about',
-                           'src/main/res/layouts/base']
+            res.srcDirs = [
+                    'src/main/res/layouts/settings',
+                    'src/main/res/layouts/main',
+                    'src/main/res/layouts/about',
+                    'src/main/res/layouts/base',
+                    'src/main/res/layouts',
+                    'src/main/res']
         }
     }
 

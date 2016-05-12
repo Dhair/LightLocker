@@ -5,7 +5,6 @@ package com.dhair.light.locker.exception;
  * Email: deng.shengjin@zuimeia.com
  */
 public class CustomException extends RuntimeException {
-
     public CustomException(String detailMessage) {
         super(detailMessage);
     }

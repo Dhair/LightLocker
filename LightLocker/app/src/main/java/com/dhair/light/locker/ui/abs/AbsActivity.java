@@ -8,17 +8,15 @@ import android.support.annotation.LayoutRes;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 
-import com.android.common.util.DeviceUtils;
 import com.android.common.util.DisplayUtils;
 import com.dhair.light.locker.R;
-import com.dhair.light.locker.service.ActivityFinishService;
-import com.dhair.light.locker.service.AppUpgradeService;
+import com.dhair.light.locker.component.service.ActivityFinishService;
+import com.dhair.light.locker.component.service.AppUpgradeService;
 
 import butterknife.ButterKnife;
 
@@ -56,7 +54,6 @@ public abstract class AbsActivity extends AppCompatActivity implements IStatusBa
         updateStatusBarHeightV19();
         updateActionBarColorV19();
         updateStatusBarColorV21();
-        updateStatusBarHeightV21();
         updateAbsContentView();
     }
 
@@ -68,30 +65,9 @@ public abstract class AbsActivity extends AppCompatActivity implements IStatusBa
 
     }
 
-    protected boolean isDarkMode() {
-        return true;
-    }
-
-    private boolean needShowStatusBar() {
-        if (DeviceUtils.isMiui(getContext()) && Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {//MIUI V6
-            boolean isSuccess = DeviceUtils.setMIUIStatusBarDarkMode(this, isDarkMode());
-            if (isSuccess) {
-                return true;
-            }
-        }
-        if (DeviceUtils.isFlyme() && Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {//Flyme4+
-            boolean isSuccess = DeviceUtils.setFlymeStatusBarDarkIcon(this, isDarkMode());
-            if (isSuccess) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     private void updateStatusBarHeightV19() {
         if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT && !DisplayUtils.isFullScreen(this)) {
-            boolean needShowStatusBar = needShowStatusBar();
-            View mStatusBarBox = findViewById(R.id.status_bar_box);
+            ViewGroup mStatusBarBox = (ViewGroup) findViewById(R.id.status_bar_box);
             if (mStatusBarBox != null) {
                 ViewGroup.LayoutParams lp = mStatusBarBox.getLayoutParams();
                 lp.height = DisplayUtils.getStatusBarHeight(getApplicationContext());
@@ -99,11 +75,7 @@ public abstract class AbsActivity extends AppCompatActivity implements IStatusBa
                 if (getStatusBarColor() > 0) {
                     mStatusBarBox.setBackgroundResource(getStatusBarColor());
                 } else {
-                    if (needShowStatusBar) {
-                        mStatusBarBox.setBackgroundResource(R.color.colorPrimaryDark);
-                    } else {
-                        mStatusBarBox.setBackgroundResource(R.color.colorPrimaryDark);
-                    }
+                    mStatusBarBox.setBackgroundResource(R.color.colorPrimaryDark);
                 }
             }
 
@@ -127,29 +99,6 @@ public abstract class AbsActivity extends AppCompatActivity implements IStatusBa
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(getStatusBarColor());
-        }
-    }
-
-    private void updateStatusBarHeightV21() {
-        boolean isWindowTranslucentStatus = true;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && !DisplayUtils.isFullScreen(this) && isWindowTranslucentStatus) {
-            boolean needShowStatusBar = needShowStatusBar();
-            ViewGroup mStatusBarBox = (ViewGroup) findViewById(R.id.status_bar_box);
-            if (mStatusBarBox != null) {
-                ViewGroup.LayoutParams lp = mStatusBarBox.getLayoutParams();
-                lp.height = DisplayUtils.getStatusBarHeight(getApplicationContext());
-                mStatusBarBox.requestLayout();
-                if (getStatusBarColor() > 0) {
-                    mStatusBarBox.setBackgroundResource(getStatusBarColor());
-                } else {
-                    if (needShowStatusBar) {
-                        mStatusBarBox.setBackgroundResource(R.color.colorPrimaryDark);
-                    } else {
-                        mStatusBarBox.setBackgroundResource(R.color.colorPrimaryDark);
-                    }
-                }
-            }
-
         }
     }
 

@@ -14,5 +14,3 @@
 6、Upload JCenter
 7、Dynamic Load Apk
 8、Main Dex
-
-e#g%e^tt&&
