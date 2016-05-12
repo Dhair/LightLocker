@@ -16,6 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <provider
+            android:name="com.dhair.light.locker.component.cp.UContentProvider"
+            android:authorities="${applicationId}.component.cp.UContentProvider"
+            android:exported="false"
+            android:process=":service"/>
     </application>
 
 </manifest>

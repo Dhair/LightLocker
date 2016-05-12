@@ -10,7 +10,7 @@ android {
         applicationId "com.dhair.light.locker"
         minSdkVersion project.properties.minSdkVersion
         targetSdkVersion project.properties.targetSdkVersion
-        versionCode project.properties.mVersionCode
+        versionCode project.properties.versionCode
         versionName project.properties.versionName
     }
 
