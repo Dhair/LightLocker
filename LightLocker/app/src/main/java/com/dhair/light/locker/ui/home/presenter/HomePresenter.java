@@ -1,17 +1,17 @@
-package com.dhair.light.locker.ui.main.presenter;
+package com.dhair.light.locker.ui.home.presenter;
 
 import android.content.Context;
 import android.os.Bundle;
 
 import com.dhair.light.locker.ui.abs.presenter.AbsMvpPresenter;
-import com.dhair.light.locker.ui.main.view.MainMvpView;
+import com.dhair.light.locker.ui.home.view.HomeMvpView;
 
 /**
  * Created by dengshengjin on 16/5/13.
  */
-public class MainPresenter extends AbsMvpPresenter<MainMvpView> {
+public class HomePresenter extends AbsMvpPresenter<HomeMvpView> {
 
-    public MainPresenter(Context context) {
+    public HomePresenter(Context context) {
         super(context);
     }
 

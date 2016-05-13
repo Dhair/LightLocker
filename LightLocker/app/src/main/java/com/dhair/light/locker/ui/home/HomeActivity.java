@@ -1,6 +1,7 @@
-package com.dhair.light.locker.ui.main;
+package com.dhair.light.locker.ui.home;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
@@ -8,12 +9,23 @@ import com.android.common.util.ToastUtils;
 import com.dhair.light.locker.R;
 import com.dhair.light.locker.component.thread.CustomHandlerThread;
 import com.dhair.light.locker.data.local.ServiceConfigManager;
-import com.dhair.light.locker.ui.abs.AbsSwipeBackActivity;
-import com.dhair.light.locker.ui.main.presenter.MainPresenter;
+import com.dhair.light.locker.ui.abs.AbsMvpActivity;
+import com.dhair.light.locker.ui.home.presenter.HomePresenter;
 import com.library.processutil.AndroidProcesses;
 
-public class MainActivity extends AbsSwipeBackActivity<MainPresenter> {
+public class HomeActivity extends AbsMvpActivity<HomePresenter> {
 
+    @Override
+    protected void onPreSetContentView() {
+        super.onPreSetContentView();
+//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
+//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+    }
+
+    public static Intent getIntent(Context context) {
+        Intent intent = new Intent(context, HomeActivity.class);
+        return intent;
+    }
 
     @Override
     protected void initData() {
@@ -51,12 +63,12 @@ public class MainActivity extends AbsSwipeBackActivity<MainPresenter> {
 
     @Override
     protected int getContentView() {
-        return R.layout.activity_main;
+        return R.layout.activity_home;
     }
 
     @NonNull
     @Override
-    protected MainPresenter createPresenter(Context context) {
-        return new MainPresenter(context);
+    protected HomePresenter createPresenter(Context context) {
+        return new HomePresenter(context);
     }
 }

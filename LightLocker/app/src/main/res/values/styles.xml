@@ -14,4 +14,9 @@
     <style name="AppTheme.NoActionBar.FullScreen">
         <item name="android:windowFullscreen">true</item>
     </style>
+
+    <style name="AppTheme.NoActionBar.TranslucentBackground">
+        <item name="android:windowIsTranslucent">@bool/windowIsTranslucent</item>
+    </style>
+
 </resources>

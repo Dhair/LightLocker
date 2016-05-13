@@ -17,9 +17,9 @@ android {
     sourceSets {
         main {
             res.srcDirs = [
+                    'src/main/res/layouts/splash',
                     'src/main/res/layouts/settings',
-                    'src/main/res/layouts/main',
-                    'src/main/res/layouts/about',
+                    'src/main/res/layouts/home',
                     'src/main/res/layouts/base',
                     'src/main/res/layouts',
                     'src/main/res']
@@ -119,7 +119,6 @@ dependencies {
     //AutoLayout
     compile project(':autolayout_api')
     apt project(':autolayout_compiler')
-
 
     //LeakCanary
     debugCompile "com.squareup.leakcanary:leakcanary-android:${leakCanaryVersion}"
