@@ -22,7 +22,8 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Parcelable;
 
-import com.android.common.R;
+import com.android.common.library.R;
+
 
 /**
  * 快捷方式

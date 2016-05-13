@@ -35,10 +35,6 @@ public class UContentProvider extends ContentProvider {
     private static UriMatcher mUriMatcher;
     private UPreferenceManager mUPreferenceManager;
 
-    static {
-        mUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-    }
-
     public static Uri getUri() {
         return mUri;
     }
@@ -47,17 +43,26 @@ public class UContentProvider extends ContentProvider {
         return context.getPackageName() + AUTHORITY;
     }
 
-    private static void init(Context context) {
+    public static void init(Context context) {
+        mUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
         mUriMatcher.addURI(getAuthority(context), UContentProviderIntent.PREFERENCE + "/*/*", MATCH_SHARE_PREFERENCES_DATA);
 
         mUriMatcher.addURI(getAuthority(context), MATCH_USER, MATCH_USER_CODE);
         mUri = Uri.parse("content://" + getAuthority(context));
     }
 
+    private UPreferenceManager getPreferenceManager() {
+        if (mUPreferenceManager == null) {
+            mUPreferenceManager = new UPreferenceManager(getApplicationContext());
+        }
+        return mUPreferenceManager;
+    }
+
     @Override
     public boolean onCreate() {
-        mUPreferenceManager = new UPreferenceManager(getApplicationContext());
-        init(getApplicationContext());
+        if (mUriMatcher == null) {
+            init(getApplicationContext());
+        }
         return true;
     }
 
@@ -76,12 +81,9 @@ public class UContentProvider extends ContentProvider {
         MatrixCursor cursor;
         switch (mUriMatcher.match(uri)) {
             case MATCH_SHARE_PREFERENCES_DATA:
-                final String key = uri.getPathSegments().get(0);
-                final String type = uri.getPathSegments().get(1);
+                final String key = uri.getPathSegments().get(1);
+                final String type = uri.getPathSegments().get(2);
                 cursor = new MatrixCursor(new String[]{key});
-                if (!mUPreferenceManager.contains(key)) {
-                    return cursor;
-                }
                 MatrixCursor.RowBuilder rowBuilder = cursor.newRow();
                 rowBuilder.add(getValue(uri, key, type));
                 break;
@@ -119,7 +121,7 @@ public class UContentProvider extends ContentProvider {
         switch (mUriMatcher.match(uri)) {
             case MATCH_SHARE_PREFERENCES_DATA:
                 final String key = uri.getPathSegments().get(1);
-                mUPreferenceManager.remove(key);
+                getPreferenceManager().remove(key);
                 break;
             default:
                 break;
@@ -135,15 +137,15 @@ public class UContentProvider extends ContentProvider {
 
     private Object getValue(Uri uri, String key, String type) {
         if (PreferenceType.STRING_TYPE.equals(type)) {
-            return mUPreferenceManager.getString(key);
+            return getPreferenceManager().getString(key);
         } else if (PreferenceType.BOOLEAN_TYPE.equals(type)) {
-            return mUPreferenceManager.getBoolean(key) ? 1 : 0;
+            return getPreferenceManager().getBoolean(key) ? 1 : 0;
         } else if (PreferenceType.LONG_TYPE.equals(type)) {
-            return mUPreferenceManager.getLong(key);
+            return getPreferenceManager().getLong(key);
         } else if (PreferenceType.INT_TYPE.equals(type)) {
-            return mUPreferenceManager.getInt(key);
+            return getPreferenceManager().getInt(key);
         } else if (PreferenceType.FLOAT_TYPE.equals(type)) {
-            return mUPreferenceManager.getFloat(key);
+            return getPreferenceManager().getFloat(key);
         } else {
             throw new IllegalArgumentException("Unsupported type " + uri);
         }
@@ -151,17 +153,17 @@ public class UContentProvider extends ContentProvider {
 
     private void putValue(Uri uri, String key, Object value) {
         if (value == null) {
-            mUPreferenceManager.remove(key);
+            getPreferenceManager().remove(key);
         } else if (value instanceof String) {
-            mUPreferenceManager.putString(key, (String) value);
+            getPreferenceManager().putString(key, (String) value);
         } else if (value instanceof Boolean) {
-            mUPreferenceManager.putBoolean(key, (Boolean) value);
+            getPreferenceManager().putBoolean(key, (Boolean) value);
         } else if (value instanceof Long) {
-            mUPreferenceManager.putLong(key, (Long) value);
+            getPreferenceManager().putLong(key, (Long) value);
         } else if (value instanceof Integer) {
-            mUPreferenceManager.putInt(key, (Integer) value);
+            getPreferenceManager().putInt(key, (Integer) value);
         } else if (value instanceof Float) {
-            mUPreferenceManager.putFloat(key, (Float) value);
+            getPreferenceManager().putFloat(key, (Float) value);
         } else {
             throw new IllegalArgumentException("Unsupported type " + uri);
         }

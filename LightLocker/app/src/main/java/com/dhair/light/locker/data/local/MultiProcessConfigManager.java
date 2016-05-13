@@ -5,9 +5,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 
+import com.dhair.light.locker.application.LightLockerApplication;
 import com.dhair.light.locker.component.cp.PreferenceType;
 import com.dhair.light.locker.component.cp.ProviderCursorUtil;
 import com.dhair.light.locker.component.cp.UContentProvider;
+
 
 /**
  * Created by dengshengjin on 16/5/12.
@@ -115,13 +117,16 @@ public class MultiProcessConfigManager {
     }
 
     private void commit(ContentValues values) {
-        mContext.getContentResolver().insert(getContentUri(UContentProvider.UContentProviderIntent.KEY, UContentProvider.UContentProviderIntent.TYPE), values);
+        Uri uri = getContentUri(UContentProvider.UContentProviderIntent.KEY, UContentProvider.UContentProviderIntent.TYPE);
+        if (uri != null) {
+            mContext.getContentResolver().insert(uri, values);
+        }
     }
 
 
     private static final Uri getContentUri(String key, String type) {
         if (UContentProvider.getUri() == null) {
-            return null;
+            UContentProvider.init(LightLockerApplication.getContext());
         }
         return UContentProvider.getUri().buildUpon().appendPath(UContentProvider.UContentProviderIntent.PREFERENCE).appendPath(key).appendPath(type).build();
     }

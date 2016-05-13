@@ -8,4 +8,9 @@ public class CustomException extends RuntimeException {
     public CustomException(String detailMessage) {
         super(detailMessage);
     }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

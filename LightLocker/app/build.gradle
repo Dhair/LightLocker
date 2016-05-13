@@ -120,8 +120,6 @@ dependencies {
     compile project(':autolayout_api')
     apt project(':autolayout_compiler')
 
-    compile project(':AndroidCommon')
-    compile project(':AndroidProcess')
 
     //LeakCanary
     debugCompile "com.squareup.leakcanary:leakcanary-android:${leakCanaryVersion}"
@@ -129,4 +127,9 @@ dependencies {
     testCompile "com.squareup.leakcanary:leakcanary-android-no-op:${leakCanaryVersion}"
 
     //Realm or LiteOrm
+
+    //AndroidUILibrary
+    compile project(':AndroidCommon')
+    compile project(':AndroidProcess')
+    compile project(':AndroidUILibrary')
 }

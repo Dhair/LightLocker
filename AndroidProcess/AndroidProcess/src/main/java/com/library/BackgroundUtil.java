@@ -17,6 +17,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.android.process.library.R;
 import com.library.processutil.AndroidProcesses;
 import com.library.processutil.models.AndroidAppProcess;
 

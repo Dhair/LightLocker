@@ -8,6 +8,7 @@ import android.support.annotation.LayoutRes;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
@@ -17,13 +18,15 @@ import com.android.common.util.DisplayUtils;
 import com.dhair.light.locker.R;
 import com.dhair.light.locker.component.service.ActivityFinishService;
 import com.dhair.light.locker.component.service.AppUpgradeService;
+import com.dhair.light.locker.exception.CustomException;
+import com.dhair.light.locker.ui.abs.spec.ISystemStatusBar;
 
 import butterknife.ButterKnife;
 
 /**
  * Created by i on 2016/5/10.
  */
-public abstract class AbsActivity extends AppCompatActivity implements IStatusBar {
+public abstract class AbsActivity extends AppCompatActivity implements ISystemStatusBar {
     private Context mContext;
     private ActivityFinishService mActivityFinishService;
     private AppUpgradeService mAppUpgradeService;
@@ -33,10 +36,11 @@ public abstract class AbsActivity extends AppCompatActivity implements IStatusBa
         super.onCreate(savedInstanceState);
         mContext = getApplicationContext();
         onPreSetContentView();
-        setContentView(R.layout.activity_abs);
+        super.setContentView(R.layout.activity_abs);
         initAbsData();
         initAbsWidgets();
         ButterKnife.bind(this);
+        onChildCreate(savedInstanceState);
         initActionBarActions();
         initData();
         initWidgets();
@@ -55,6 +59,30 @@ public abstract class AbsActivity extends AppCompatActivity implements IStatusBa
         updateActionBarColorV19();
         updateStatusBarColorV21();
         updateAbsContentView();
+    }
+
+    protected void onChildCreate(Bundle savedInstanceState) {
+
+    }
+
+    @Deprecated
+    @Override
+    public void setContentView(@LayoutRes int layoutResID) {
+        throw new CustomException("please don't call this method directly");
+    }
+
+    @Deprecated
+    @Override
+    public void setContentView(View view) {
+        super.setContentView(view);
+        throw new CustomException("please don't call this method directly");
+    }
+
+    @Deprecated
+    @Override
+    public void setContentView(View view, ViewGroup.LayoutParams params) {
+        super.setContentView(view, params);
+        throw new CustomException("please don't call this method directly");
     }
 
     protected void onPreSetContentView() {
@@ -131,7 +159,6 @@ public abstract class AbsActivity extends AppCompatActivity implements IStatusBa
 
     @LayoutRes
     protected abstract int getContentView();
-
 
     @Override
     protected void onDestroy() {

@@ -1,0 +1,56 @@
+<resources>
+    <color name="transparent">#00000000</color>
+    <color name="white_10_alpha">#1affffff</color>
+    <color name="white_15_alpha">#26ffffff</color>
+    <color name="white_20_alpha">#33ffffff</color>
+    <color name="white_25_alpha">#40ffffff</color>
+    <color name="white_30_alpha">#4Dffffff</color>
+    <color name="white_35_alpha">#59ffffff</color>
+    <color name="white_40_alpha">#66ffffff</color>
+    <color name="white_45_alpha">#73ffffff</color>
+    <color name="white_50_alpha">#80ffffff</color>
+    <color name="white_55_alpha">#8Cffffff</color>
+    <color name="white_60_alpha">#99ffffff</color>
+    <color name="white_65_alpha">#A6ffffff</color>
+    <color name="white_70_alpha">#B3ffffff</color>
+    <color name="white_75_alpha">#BFffffff</color>
+    <color name="white_80_alpha">#BBffffff</color>
+    <color name="white_85_alpha">#BBffffff</color>
+    <color name="white_90_alpha">#E6ffffff</color>
+    <color name="white_95_alpha">#F3ffffff</color>
+
+    <color name="black_10_alpha">#1a000000</color>
+    <color name="black_15_alpha">#26000000</color>
+    <color name="black_20_alpha">#33000000</color>
+    <color name="black_25_alpha">#40000000</color>
+    <color name="black_30_alpha">#4D000000</color>
+    <color name="black_35_alpha">#59000000</color>
+    <color name="black_40_alpha">#66000000</color>
+    <color name="black_45_alpha">#73000000</color>
+    <color name="black_50_alpha">#80000000</color>
+    <color name="black_55_alpha">#8C000000</color>
+    <color name="black_60_alpha">#99000000</color>
+    <color name="black_65_alpha">#A6000000</color>
+    <color name="black_70_alpha">#B3000000</color>
+    <color name="black_75_alpha">#BF000000</color>
+    <color name="black_80_alpha">#BB000000</color>
+    <color name="black_85_alpha">#BB000000</color>
+    <color name="black_90_alpha">#E6000000</color>
+    <color name="black_95_alpha">#F3000000</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="red_light">#ff4444</color>
+    <color name="red_dark">#cc0000</color>
+    <color name="blue_light">#33b5e5</color>
+    <color name="blue_dark">#0099cc</color>
+    <color name="yellow">#FFFF00</color>
+    <color name="green_dark">#669900</color>
+    <color name="green_light">#99cc00</color>
+    <color name="cyan">#00FFFF</color>
+    <color name="orange_light">#ffbb33</color>
+    <color name="orange_black">#ff8800</color>
+    <color name="purple">#aa66cc</color>
+    <color name="gray_light">#33999999</color>
+    <color name="gray_bright">#33CCCCCC</color>
+</resources>

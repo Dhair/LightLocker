@@ -17,7 +17,7 @@ package com.android.common.util;
 
 import android.util.Log;
 
-import com.android.common.BuildConfig;
+import com.android.common.library.BuildConfig;
 
 
 /**
