@@ -5,7 +5,7 @@ import shutil
 import os
 
 # 空文件 便于写入此空文件到apk包中作为channel文件
-src_empty_file = 'info/zuiapps_template.txt'
+src_empty_file = 'channel/channel_template.txt'
 # 创建一个空文件（不存在则创建）
 f = open(src_empty_file, 'w') 
 f.close()
@@ -21,11 +21,11 @@ for file in os.listdir('.'):
             src_apks.append(file)
 
 # 获取渠道列表
-channel_file = 'info/zuiapps_channels.txt'
+channel_file = 'channel/channels.txt'
 f = open(channel_file)
 lines = f.readlines()
 f.close()
-
+print 'packing is starting'
 for src_apk in src_apks:
     # file name (with extension)
     src_apk_file_name = os.path.basename(src_apk)
@@ -37,7 +37,8 @@ for src_apk in src_apks:
     src_apk_extension = temp_list[1]
     
     # 创建生成目录,与文件名相关
-    output_dir = 'output/'
+    output_dir = 'outputs/'
+    shutil.rmtree(output_dir)
     # 目录不存在则创建
     if not os.path.exists(output_dir):
         os.mkdir(output_dir)
@@ -53,7 +54,7 @@ for src_apk in src_apks:
         # zip获取新建立的apk文件
         zipped = zipfile.ZipFile(target_apk, 'a', zipfile.ZIP_DEFLATED)
         # 初始化渠道信息
-        empty_channel_file = "META-INF/zuiapps_{channel}".format(channel = target_channel)
+        empty_channel_file = "META-INF/channel_{channel}".format(channel = target_channel)
         print(target_channel+" is packing")
         # 写入渠道信息
         zipped.write(src_empty_file, empty_channel_file)

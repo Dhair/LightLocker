@@ -23,6 +23,7 @@ android {
                     'src/main/res/layouts/base',
                     'src/main/res/layouts',
                     'src/main/res']
+            resources.srcDirs = ['src/main/resources', 'src/main/resources/']
         }
     }
 
@@ -45,7 +46,7 @@ android {
                     def outputFile = output.outputFile
                     if (outputFile != null && outputFile.name.endsWith('release.apk')) {
                         def timeStamp = new Date().format('MM_dd_HH_mm');
-                        def fileName = "LightLocker_${variant.productFlavors[0].name}_v${defaultConfig.versionName}" + "_" + timeStamp + ".apk";
+                        def fileName = "LightLocker_v${defaultConfig.versionName}" + "_" + timeStamp + ".apk";
                         output.outputFile = file("${outputFile.parent}/${fileName}")
                     }
                 }
@@ -53,12 +54,6 @@ android {
         }
     }
     signAppWithKeystore()
-
-    // Channels
-    productFlavors {
-        xiaomi {}
-        qihoo {}
-    }
 
     lintOptions {
         abortOnError false

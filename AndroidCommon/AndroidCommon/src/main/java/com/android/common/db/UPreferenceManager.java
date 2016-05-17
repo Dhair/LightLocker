@@ -3,7 +3,6 @@ package com.android.common.db;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
-import android.util.Log;
 
 /**
  * Created by dengshengjin on 16/5/12.
@@ -115,7 +114,7 @@ public class UPreferenceManager {
 
     private void commit(SharedPreferences.Editor mEditor) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
-            mEditor.apply();//开启了新线程
+            mEditor.apply();
         } else {
             mEditor.commit();//开启了新线程
         }

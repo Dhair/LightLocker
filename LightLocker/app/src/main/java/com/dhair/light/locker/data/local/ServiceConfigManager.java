@@ -13,6 +13,7 @@ public class ServiceConfigManager {
 
     private static final String PRE_VERSION = "PreVersion";
     private static final String CURRENT_VERSION = "CurrVersion";
+    private static final String CHANNEL = "Channel_";
 
     private ServiceConfigManager(Context context) {
         mUPreferenceManager = new MultiProcessConfigManager(context);
@@ -44,4 +45,13 @@ public class ServiceConfigManager {
     public void setPreVersion(int version) {
         mUPreferenceManager.putInt(PRE_VERSION, version);
     }
+
+    public void setChannel(String channel) {
+        mUPreferenceManager.putString(CHANNEL + BuildConfig.VERSION_CODE, channel);
+    }
+
+    public String getChannel() {
+        return mUPreferenceManager.getString(CHANNEL + BuildConfig.VERSION_CODE);
+    }
+
 }

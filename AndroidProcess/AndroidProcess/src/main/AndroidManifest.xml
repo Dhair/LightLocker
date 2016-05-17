@@ -12,7 +12,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true">
         <!--<service-->
-        <!--android:name="com.library.DetectService"-->
+        <!--android:name="com.android.process.library.DetectService"-->
         <!--android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">-->
 
         <!--<intent-filter>-->

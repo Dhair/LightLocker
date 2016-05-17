@@ -15,4 +15,10 @@
 
     <attr name="SwipeBackLayoutStyle" format="reference"/>
 
+    <declare-styleable name="RippleView">
+        <attr name="RV_Background_color" format="color"/>
+        <attr name="RV_Circle_color" format="color"/>
+    </declare-styleable>
+
+    <attr name="RippleViewStyle" format="reference"/>
 </resources>

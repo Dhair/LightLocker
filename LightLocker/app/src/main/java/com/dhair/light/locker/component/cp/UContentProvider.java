@@ -84,6 +84,9 @@ public class UContentProvider extends ContentProvider {
                 final String key = uri.getPathSegments().get(1);
                 final String type = uri.getPathSegments().get(2);
                 cursor = new MatrixCursor(new String[]{key});
+                if (!getPreferenceManager().contains(key)) {
+                    return cursor;
+                }
                 MatrixCursor.RowBuilder rowBuilder = cursor.newRow();
                 rowBuilder.add(getValue(uri, key, type));
                 break;

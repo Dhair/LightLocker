@@ -41,3 +41,7 @@
 #RxJava
 -dontwarn rx.**
 -keep class rx.** { * ; }
+
+#LeakCanary
+-keep class org.eclipse.mat.** { *; }
+-keep class com.squareup.leakcanary.** { *; }

@@ -6,8 +6,6 @@ import android.os.Message;
 import android.view.WindowManager;
 
 import com.dhair.light.locker.R;
-import com.dhair.light.locker.component.handler.IMessageHandler;
-import com.dhair.light.locker.component.handler.MessageHandler;
 import com.dhair.light.locker.ui.abs.AbsActivity;
 import com.dhair.light.locker.ui.home.HomeActivity;
 
