@@ -113,6 +113,8 @@ public class RippleUIService implements IMessageHandler {
         if (null != mCirclePaint) {
             mCirclePaint.setColor(mCircleColor);
         }
+        mBgPaint.setAlpha(0);
+        mCirclePaint.setAlpha(0);
     }
 
     public void setDuration(long fastMove, long fastHide, long slowMove, long slowHide) {
