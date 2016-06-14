@@ -14,3 +14,6 @@ project(':AndroidProcess').projectDir = new File('../AndroidProcess/AndroidProce
 
 include ':AndroidUILibrary'
 project(':AndroidUILibrary').projectDir = new File('../AndroidUILibrary/AndroidUILibrary')
+
+//include ':DownloadProvider'
+//project(':DownloadProvider').projectDir = new File('../DownloadProvider/DownloadProvider')
